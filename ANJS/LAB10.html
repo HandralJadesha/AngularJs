@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>ITEMS</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.items=[]
+            $scope.add=function()
+            {
+                $scope.items.push($scope.newitem)
+                $scope.newitem=''
+            }
+
+            $scope.delete=function(index)
+            {
+                $scope.items.splice(index,1)
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+
+    Enter the items to be inserted:
+    <input type="text" ng-model="newitem" required><br>
+    <button ng-click="add()">ADD</button>
+
+    <p>number of items are:{{items.length}}</p>
+
+    <ul>
+        <li ng-repeat="i in items">{{i}}
+           <button nf-click="delete()">REMOVE</button>
+        </li>
+    </ul>
+    
+</body>
+</html>

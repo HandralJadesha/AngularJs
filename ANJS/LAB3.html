@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.calci=function()
+            {
+                  switch($scope.op)
+                  {
+                    case '+':
+                        $scope.res=$scope.n1+$scope.n2
+                        break;
+                    case '-':
+                        $scope.res=$scope.n1-$scope.n2
+                        break;
+                    case '*':
+                        $scope.res=$scope.n1*$scope.n2
+                        break;
+                    case '/':
+                        if($scope.n2!==0)
+                        {
+                        $scope.res=$scope.n1/$scope.n2
+                        }
+                        else
+                        alert("Divide by zero error!!!!")
+                        break;
+
+                  }
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    Enter the number 1:
+    <input type="number" ng-model="n1" required>
+    Enter the Opertor:
+    <select ng-model="op">
+        <option></option>
+        <option value="+">ADD</option>
+        <option value="-">SUBTRACT</option>
+        <option value="*">MULTIPLY</option>
+        <option value="/">DIVISION</option>
+    </select>
+    Enter the number 2:
+    <input type="number" ng-model="n2" required>
+
+    <button ng-click="calci()">SUBMIT</button><br>
+    The result is:
+    {{res}}
+    
+</body>
+</html>

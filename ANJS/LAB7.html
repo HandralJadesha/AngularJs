@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.users=[]
+            $scope.add=function()
+            {
+                $scope.users.push({name:$scope.name,age:$scope.age,email:$scope.email
+                })
+                $scope.name=''
+                $scope.age=''
+                $scope.email=''
+
+            }
+
+            $scope.edit=function(index)
+            {
+                var ename=prompt("Enter the name to update")
+                var eage=prompt("Enter the age to update")
+                var eemail=prompt("Enter the email to upadte")
+
+                if(!(ename==null && eage==null && eemail==null))
+                {   var upd={name:ename,age:eage,email:eemail}
+                    $scope.users.splice(index,1,upd)
+                }
+            }
+            $scope.delete=function(index)
+            {
+                $scope.users.splice(index,1)
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>EMAIL</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="u in users">
+                <td>{{u.name}}</td>
+                <td>{{u.age}}</td>
+                <td>{{u.email}}</td>
+                <td><button ng-click="edit()">EDIT</button><button ng-click="delete()">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table><br>
+    <form ng-submit="add()">
+        Enter the name:
+        <input type="text" ng-model="name"><br>
+        Enter the Age:
+        <input type="number" ng-model="age"><br>
+        Enter the Email:
+        <input type="email" ng-model="email"><br>
+        <button type="submit">SUBMIT</button>
+
+    </form>
+    
+</body>
+</html>

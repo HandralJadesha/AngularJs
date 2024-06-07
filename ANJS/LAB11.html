@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>CAPITAL</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+              $scope.names=['jadesha','girish','harsha']
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    Small letter names:
+    <ul>
+        <li ng-repeat="n in names">
+       {{n}}
+        </li>
+    </ul>
+   Capital letter names:
+    <ul>
+        <li ng-repeat="n in names">
+       {{n|uppercase}}
+        </li>
+    </ul>
+
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html ng-app="DateApp"> 
+    <head> 
+ 
+        <title> Date display in different formats using Filters</title> 
+        <script src="lib.js"></script> 
+        <script>  
+            var app=angular.module("DateApp",[]); 
+            app.controller("DateCtrl",function($scope) 
+            { 
+                    $scope.today=new Date(); 
+ 
+            }); 
+        </script> 
+    </head> 
+    <body ng-controller="DateCtrl"> 
+       Current Date: {{today|date}}<br> 
+       Current Year:{{today|date:'yyyy'}}<br> 
+       Current Month:{{today|date:'MM'}}<br> 
+       Fulldate:{{today|date:'fullDate'}}<br> 
+       Shortdate:{{today|date:'shortDate'}}<br> 
+       Short:{{today|date:'short'}}<br> 
+    </body> 
+</html> 

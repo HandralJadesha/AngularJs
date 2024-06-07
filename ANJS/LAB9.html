@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title> Employee</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.emp=[{name:'Ram',sal:'25000'},{name:'jadesha',sal:'50000000'}]
+            $scope.ename=''
+            $scope.esal=''
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    Enter the employee name:
+    <input type="text" ng-model="ename"><br><br>
+    Enter the employee salary:
+    <input type="number" ng-model="esal"><br>
+    <ul>
+        <li ng-repeat="e in emp|filter:{name:ename,sal:esal}">
+            {{e.name}}-salary:{{e.sal}}
+
+        </li>
+    </ul>
+</body>
+</html>

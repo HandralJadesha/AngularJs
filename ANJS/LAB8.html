@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>LOGIN</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.valid=function()
+            {
+                if($scope.name=='ram' && $scope.password=='ram123')
+                {
+                    alert("Login successfull!!!")
+                }
+                else
+                {
+                    alert("Login Unsuccessfull!!")
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    <h1>LOGIN FORM</h1>
+    <form ng-submit="valid()">
+       Enter the Name:
+       <input type="text"  ng-model="name" required><br><br>
+       Enter the password:
+       <input type="text" ng-model="password" required><br><br>
+       <button type="submit">SUBMIT</button>
+    </form>
+</body>
+</html>

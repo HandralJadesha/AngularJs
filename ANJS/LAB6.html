@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title>TO-DO-LIST</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.tasks=[]
+            $scope.newtask=""
+            $scope.add=function()
+            {
+                $scope.tasks.push($scope.newtask)
+                $scope.newtask=""
+            }
+
+            $scope.delete=function(index)
+            {
+                var cd=confirm("Are you sure want to delete!!!")
+                if(cd)
+                {
+                    $scope.tasks.splice(index,1)
+                }
+            }
+
+            $scope.edit=function(index)
+            {
+                var upd=prompt("Enter the upadeted task")
+                if(upd!=null)
+                {
+                    $scope.tasks.splice(index,1,upd)
+                }
+            }
+        })
+    </script>
+</head>
+<body  ng-controller="mycntrl">
+    <p>TO-DO-LIST</p>
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>ACTION</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            <tr ng-repeat="task in tasks">
+                <td>{{task}}</td>
+                <td><button ng-click="edit()">EDIT</button>
+                <button ng-click="delete()">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table><br>
+
+    Enter the new item:
+    <input type="text" ng-model="newtask" required>
+    <button ng-click="add()">ADD</button>
+    
+</body>
+</html>

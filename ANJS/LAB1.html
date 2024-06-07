@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="fullname">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FULL NAME</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("fullname",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.fname=""
+            $scope.lname=""
+            $scope.fullname=function()
+            {
+                $scope.name=$scope.fname+" "+$scope.lname
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    Enter the first name:
+    <input type="text" ng-model="fname" required><br>
+    Enter the last name:
+    <input type="text" ng-model="lname" required><br>
+    <button ng-click="fullname()">full name</button><br>
+    full name is:{{name}}
+    
+</body>
+</html>

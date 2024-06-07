@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact & Square</title>
+    <script src="lib.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("mycntrl",function($scope)
+        {
+            $scope.square=function(num)
+            {
+                $scope.res=$scope.num*$scope.num
+            }
+
+            $scope.fact=function(num)
+            {
+                if(num>0)
+                {
+                    var fact=1
+                    for(i=1;i<=num;i++)
+                    {
+                        fact=fact*i
+                    }
+                    
+                }
+                else
+                alert("Cannot find factorial for negative number>>>")
+                $scope.res1=fact
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mycntrl">
+    Enter the number :
+    <input type="text" ng-model="num" required>
+    <button ng-click="square(num)">SQUARE</button>
+    <button ng-click="fact(num)">FACTORIAL</button><br>
+
+    The result is:
+    Sqaure:{{res}}<br>
+    Factorial:{{res1}}
+    
+</body>
+</html>
